@@ -15,7 +15,6 @@ build-type:          Custom
 extra-source-files:  libxls-0.3.0_pre107.tar.bz2
                      README
 cabal-version:       >=1.10
-
 library
   hs-source-dirs:      src
   include-dirs:        include
@@ -34,3 +33,8 @@ library
   default-extensions:  ForeignFunctionInterface
 
   install-includes:    brdb.c.h brdb.h ole.h xls.h xlsstruct.h xlstool.h xlstypes.h
+
+
+source-repository head
+    type: git
+    location: https://github.com/uuhan/bindings-libxls
