@@ -18,21 +18,23 @@ openBook :: String -> String -> IO WorkBook
 openBook name e = do
     withCString name $ \c'name -> do
         withCString e $ \c'decode -> do
-            throwErrnoIfNull ("Open " ++ name ++ "Failed!")
-                (do 
-                    wb <- c'xls_open c'name c'decode
-                    c'xls_parseWorkBook wb
-                    return wb
-                    )
+            c'xls_open c'name c'decode
+                >>= \p -> if p == nullPtr 
+                              then do
+                                  throwErrno ("Open " ++ name ++ " Failed!")
+                              else do
+                                  c'xls_parseWorkBook p
+                                  return p
 
 openSheet :: WorkBook -> Int -> IO WorkSheet
 openSheet book no = do
-    throwErrnoIfNull "No Such Sheet" $ 
-        (do 
-            st <- c'xls_getWorkSheet book (fromIntegral no)
-            c'xls_parseWorkSheet st
-            return st
-            )
+    c'xls_getWorkSheet book (fromIntegral no)
+        >>= \p -> if p == nullPtr 
+                      then do
+                          throwErrno ("No Such Sheet")
+                      else do
+                        c'xls_parseWorkSheet p
+                        return p
 
 getCell :: WorkSheet -> Int -> Int -> IO CellData
 getCell sheet x y = do
