@@ -5,7 +5,7 @@ name:                libxls
 version:             0.2
 synopsis:            Bindings to libxls
 description:         Read Data From xls file 
--- license:             
+license:             MIT         
 license-file:        LICENSE
 author:              uuhan
 maintainer:          xuminhui189@gmail.com
