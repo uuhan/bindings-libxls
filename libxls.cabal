@@ -3,14 +3,14 @@
 
 name:                libxls
 version:             0.2
--- synopsis:            
--- description:         
+synopsis:            Bindings to libxls
+description:         Read Data From xls file 
 -- license:             
 license-file:        LICENSE
 author:              uuhan
 maintainer:          xuminhui189@gmail.com
 -- copyright:           
--- category:            
+category:            FFI
 build-type:          Custom
 extra-source-files:  libxls-0.3.0_pre107.tar.bz2
                      README
