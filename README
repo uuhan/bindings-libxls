@@ -1,0 +1,22 @@
+libxls可用来读取xls格式文档。
+
+** cabal configure
+** cabal build
+** cabal install
+** cabal repl --ghc-options=-Llib --ghc-options=-lxlsreader
+
+openBook :: String -> String -> IO WorkBook
+            |         |
+            xls文档   解码方式
+
+openSheet :: WorkBook -> Int -> IO WorkSheet
+                         |
+                         sheet号码
+
+getCell :: WorkSheet -> Int -> Int -> IO CellData
+                        |      |
+                        x      y
+
+showCellInfo :: CellData -> IO ()
+
+** 绑定自libxls c语言库
